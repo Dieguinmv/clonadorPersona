@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import persona.Persona;
+import persona.PersonaData;
 
 public class ClonadorPersona {
 	
@@ -23,9 +24,15 @@ public class ClonadorPersona {
 	}
 
 	private void generadorPersonas(List<Persona> clones) {
-		for(int i=0;i<11;i++) {
-			Persona p = new Persona(nombre,(int)(Math.random()*101),(int)(Math.random()*201),(int)(Math.random()*100));
-			clones.add(p);
+		
+		int contador = 0;
+		while(contador != 10) {
+			Persona p = new Persona(nombre,(int)(Math.random()*PersonaData.EDAD_SUPERIOR),(int)(Math.random()*PersonaData.PESO_SUPERIOR),(int)(Math.random()*PersonaData.ALTURA_SUPERIOR));
+			if(PersonaData.comprobarLimites(p) == true) {
+				clones.add(p);
+				contador++;
+			}
+			
 		}
 	}
 	
