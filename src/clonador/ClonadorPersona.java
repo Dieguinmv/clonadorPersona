@@ -2,7 +2,7 @@ package clonador;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import excepciones.*;
 import persona.Persona;
 import persona.PersonaData;
 
@@ -14,7 +14,7 @@ public class ClonadorPersona {
 		this.nombre = nombre;
 	}
 
-	public List<Persona> generar() {
+	public List<Persona> generar() throws IllegalPersonaException {
 		
 		List<Persona> clones = new ArrayList<Persona>();
 		generadorPersonas(clones);
@@ -23,7 +23,7 @@ public class ClonadorPersona {
 		
 	}
 
-	private void generadorPersonas(List<Persona> clones) {
+	private void generadorPersonas(List<Persona> clones) throws IllegalPersonaException {
 		
 		int contador = 0;
 		while(contador != 10) {
@@ -32,6 +32,7 @@ public class ClonadorPersona {
 				clones.add(p);
 				contador++;
 			}
+			else throw new IllegalPersonaException("La persona que intenta añadir no cumple con los limites");
 			
 		}
 	}
