@@ -25,15 +25,13 @@ public class ClonadorPersona {
 
 	private void generadorPersonas(List<Persona> clones) throws IllegalPersonaException {
 		
-		int contador = 0;
-		while(contador != 10) {
+		for(int i =0;i<11;i++) {
 			Persona p = FactoryPersona.getPersona(nombre);
 			
 			boolean personaValida = ValidadorPersona.isValid(p);
 			
 			if(personaValida) {
 				clones.add(p);
-				contador++;
 			}
 			
 			
