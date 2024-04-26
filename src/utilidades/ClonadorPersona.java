@@ -14,28 +14,20 @@ public class ClonadorPersona {
 		this.nombre = nombre;
 	}
 
-	public List<Persona> generar() throws IllegalPersonaException {
+	public List<Persona> generar(){
 		
 		List<Persona> clones = new ArrayList<Persona>();
-		generadorPersonas(clones);
+		for(int i =0;i<11;i++) {
+			
+			try{
+				Persona p = FactoryPersona.getPersona(nombre);
+				clones.add(p);
+			} catch(Exception e) {}	
+		}
 		return clones;
 		
 		
 	}
 
-	private void generadorPersonas(List<Persona> clones) throws IllegalPersonaException {
-		
-		for(int i =0;i<11;i++) {
-			Persona p = FactoryPersona.getPersona(nombre);
-			
-			boolean personaValida = ValidadorPersona.isValid(p);
-			
-			if(personaValida) {
-				clones.add(p);
-			}
-			
-			
-		}
-	}
 	
 }
